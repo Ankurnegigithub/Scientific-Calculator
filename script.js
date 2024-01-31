@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 
@@ -27,31 +26,24 @@ function init(){
    
    //BACKGROUND TEXTURES
    const cubeTextures =[
-       'px.jpg',
-       'nx.jpg',
-       'py.jpg',
-       'ny.jpg',
-       'pz.jpg',
-       'nz.jpg'
+       './Images/px.jpg',
+       './Images/nx.jpg',
+       './Images/py.jpg',
+       './Images/ny.jpg',
+       './Images/pz.jpg',
+       './Images/nz.jpg'
    ]
    
     enviroment = new THREE.CubeTextureLoader().load(cubeTextures);
    scene.background = enviroment;
    
    //3D MODEL LOAD
-    loader = new GLTFLoader(); 
-   loader.load('calculator.glb', ( gltf ) =>{
-       bike = gltf.scene;
-   if(bike){
-       bike.position.set(0,-2,0);
-       bike.castShadow = true;
-       bike.receiveShadow = true;
-       bike.scale.set(8,8,8);
-       
-   }	
-   scene.add(bike);
-   render();
-   } );
+   const Calgeometry = new THREE.BoxGeometry(4,8,0.2);
+   const Caltexture = new THREE.TextureLoader().load('Cal.png');
+   const Calmterial = new THREE.MeshBasicMaterial({map:Caltexture});
+   const Calmesh = new THREE.Mesh(Calgeometry,Calmterial);
+
+   scene.add(Calmesh);
    
     };
    
@@ -91,4 +83,7 @@ window.addEventListener('resize', ()=>{
         renderer.render( scene, camera );
     }
 
+
+
+    
 

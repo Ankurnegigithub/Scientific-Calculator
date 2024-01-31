@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scientific Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One|Play' rel='stylesheet' type='text/css'>
+    
+    <link href='https://fonts.googleapis.com/css?family=Black+Ops+One|Audiowide' rel='stylesheet' type='text/css'>
+    
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
    <section id="mainscreen">
@@ -13,11 +18,102 @@
    <div id="modelcontainer">
 <button onclick="OpenCalculate()" id="butto">Calculate</button>
    </div>
-   <div class="calculate" id="cal">
-   
+   <div class="calc-outer" id="open">
+      
+    <div id="calculator" class="text-center">
+      
+     <div>
+       
+        
+        <span class="casio">CASIO</span>
+        <span class="fx">fx-350MS</span>        
+    
+      </div>
+      
+       <h3 id="timer" class="tag">S-V.P.A.M</h3>
+      <form>
+        <input type="text" id="display-box" disabled><br>
+        
+        <div>
+          <input type="button" value="log" class="trigo-keys" onClick="calc('logx');">
+          
+           <button type="button" class="trigo-keys" onClick="calc('exponential');">e<sup>x</sup></button>
+          
+           <button type="button" class="trigo-keys" onClick="calc('power2');" > x<sup>2</sup></button>
+              
+          <button type="button" class="trigo-keys" onClick="calc('power3');">x<sup>3</sup></button>
+          <button type="button" class="trigo-keys" onClick="calc('sqrt');">&radic;</button>
+          
+           <button type="button" class="trigo-keys" onClick="calc('fact');">x!</button>
+         
+        
+          
+        </div>
+        <div>
+            <button type="button" class="trigo-keys" onClick="calc('sin');">sin</button>
+          <button type="button" class="trigo-keys" onClick="calc('cos');">cos</button>
+          
+          <button type="button" class="trigo-keys" onClick="calc('tan');">tan</button>
+            
+            
+          
+          <button type="button" class="trigo-keys" onClick="calc('asin');">sin<sup>-1</sup></button>
+             
+          
+          <button type="button" class="trigo-keys" onClick="calc('acos');">cos<sup>-1</sup></button>
+          
+          
+          <button type="button" class="trigo-keys" onClick="calc('atan');">tan<sup>-1</sup></button>
+          
+          
+        </div>
+        
+        
+        
+        
+        <div>
+          <input type="button" value="7" class="keys" onClick="addToScreen('7')">
+       <input type="button" value="8" class="keys" onClick="addToScreen('8')">
+        <input type="button" value="9" class="keys" onClick="addToScreen('9')">
+           <input type="button" value="DEL" class="keys del-ac" onClick="backspace();">
+          <input  type="button" value="AC" class="keys del-ac" onClick="addToScreen('C')">         
+        </div>
+        
+        <div>
+            <input type="button" value="4" class="keys" onClick="addToScreen('4')">
+            <input type="button" value="5" class="keys" onClick="addToScreen('5')">
+      <input type="button" value="6" class="keys" onClick="addToScreen('6')">
+              <input type="button" value="X" class="keys" onClick="addToScreen('*')">
+            <input  type="button" value="/" class="keys" onClick="addToScreen('/')">    
+          
+        </div>
+        
+        <div>
+             <input type="button" value="1" class="keys" onClick="addToScreen('1')">
+           <input type="button" value="2" class="keys" onClick="addToScreen('2')">
+           <input type="button" value="3" class="keys" onClick="addToScreen('3')">
+          <input type="button" value="+" class="keys" onClick="addToScreen('+')">
+  <input type="button" value="-" class="keys" onClick="addToScreen('-')">
+        </div>
+        
+        <div>
+            <input type="button" value="0" class="keys" onClick="addToScreen('0')">
+          <input type="button" value="." class="keys" onClick="addToScreen('.')">                 
+          <input  type="button" value="%" class="keys" onClick="addToScreen('%')">
+          <input type="button" value="=" class="equal keys" onClick="answer();">    
+        </div>
+           
+        <div>   
+         
+    
+      
 
-
-   </div>
+        
+        </div>
+      </form>
+      
+    </div>
+    </div>
    <script type="importmap">
     {
       "imports": {
@@ -26,14 +122,129 @@
       }
     }
   </script>
+  <script type="text/javascript">
+var box = document.getElementById("display-box");
+
+function addToScreen(x){
+    box.value += x;
+    if(x=="c"||x=="C"){
+      box.value="";
+    }
+  
+}
+
+function answer(){
+  x=box.value;
+  x=eval(x);
+  box.value=x;
+}
+
+function backspace(){
+  var x = box.value;
+  var lengthAfterDeletion= x.length-1;
+  var newNumbers = x.substring(0,lengthAfterDeletion);
+  box.value = newNumbers;
+  
+}
+
+
+function calc(id){
+  
+  switch(id){
+      
+      case "power2":
+        var y=2;
+        var x = box.value;
+        var result = Math.pow(x,y);
+        box.value= result;
+     break;
+      
+      case "power3":
+        var y=3;
+        var x = box.value;
+        var result = Math.pow(x,y);
+        box.value= result;
+     break;
+      
+    case "logx":
+        var x = box.value;
+        box.value = Math.log(x);
+    break;
+      
+    case "sqrt":
+      x=box.value;
+      box.value=Math.sqrt(x);
+      break;
+      
+    case "exponential":
+      x=box.value;
+      box.value=Math.exp(x);
+      break;
+      
+    case "sin":
+      x=box.value;
+      box.value=Math.sin(x);
+      break;
+      
+    case "asin":
+      x=box.value;
+      box.value=Math.asin(x);
+      break;
+      
+    case "cos":
+      x=box.value;
+      box.value=Math.cos(x);
+      break;
+      
+    case "acos":
+      x=box.value;
+      box.value=Math.acos(x);
+      break;
+      
+    case "tan":
+      x=box.value;
+      box.value = Math.tan(x);
+      break;
+    case "atan":
+      x= box.value;
+      box.value= Math.atan(x);
+      break;
+    case "fact":
+      x=box.value;
+      
+      y=1;
+      for(var i=1; i<=x; i++){
+        y=y*i;
+      }
+      box.value=y;
+      
+      break;
+      
+  }
+  
+}
+
+
+function showTime(){
+      var time = new Date();
+      var hour= time.getHours();
+
+      var minutes = time.getMinutes();
+      var seconds = time.getSeconds();
+        var completeTime = hour+":"+minutes+":"+seconds;
+      document.getElementById("timer").innerHTML= completeTime;
+
+    }
+setInterval("showTime()",1000);
+  </script>
     <script src="./script.js" type="module"></script>
 <script>
   function OpenCalculate(){
     document.getElementById('modelcontainer').style.display = 'none';
-    document.getElementById('cal').style.display = 'block';
+
 }
 </script>
 
-    <!-- c -->
+   
 </body>
 </html>
