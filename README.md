@@ -1,2 +1,2 @@
 # Scientific-Calculator
- A 3d viewable  Scientific Calculator 
+ A Scientific calculator capable of performing all simple and complex arithmetic tasks
