@@ -13,11 +13,11 @@
 </head>
 <body>
    <section id="mainscreen">
-    <h1>CASIO fx-550</h1>
+    <h1 id="h-1">CASIO fx-550</h1>
+    <button onclick="OpenCalculate()" id="butto">Calculate</button>
+
    </section>
-   <div id="modelcontainer">
-<button onclick="OpenCalculate()" id="butto">Calculate</button>
-   </div>
+   
    <div class="calc-outer" id="open">
       
     <div id="calculator" class="text-center">
@@ -237,13 +237,15 @@ function showTime(){
     }
 setInterval("showTime()",1000);
   </script>
-    <script src="./script.js" type="module"></script>
 <script>
   function OpenCalculate(){
-    document.getElementById('modelcontainer').style.display = 'none';
+    document.getElementById('mainscreen').style.display = 'none'
+
 
 }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./script.js" type="module"></script>
 
    
 </body>
